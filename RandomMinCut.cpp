@@ -13,9 +13,9 @@ int main()
     }
     int f=n+1;
     vector<int>used;
-    int x=min((int)edges.size(),n-2);
+    int x=n;
     map<pair<int,int>,int>done;
-    for(int i=0;i<x;i++){
+    for(int i=0;i<edges.size();i++){
 
         auto u=edges[i];
         int v1=u.first;
@@ -33,18 +33,25 @@ int main()
         }
         f++;
         done[edges[i]]=1;
-
+        x--;
         for(int j=i;j<edges.size();j++){
             if(edges[i].first==edges[i].second){
                 done[edges[i]]=1;
             }
         }
+        
+        if(x==2)break;
+
+        
 
 
 
     }
 
-    int ans=edges.size()-x;
+    int ans=0;
+    for(int i=0;i<edges.size();i++){
+        if(!done[edges[i]])ans++;
+    }
     cout<<ans<<endl;
 
 }

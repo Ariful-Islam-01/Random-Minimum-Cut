@@ -1,2 +1,2 @@
 //output sample
-3
+2
